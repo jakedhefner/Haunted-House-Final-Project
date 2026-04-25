@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate ()
     {
+        Sprint();
         var pos = MoveAction.ReadValue<Vector2>();
         
         float horizontal = pos.x;
@@ -44,5 +45,17 @@ public class PlayerMovement : MonoBehaviour
         m_Rigidbody.MoveRotation (m_Rotation);
         m_Rigidbody.MovePosition (m_Rigidbody.position + m_Movement * walkSpeed * Time.deltaTime);
     }
+
+    public void Sprint()
+    {
+        if(Input.GetKey(KeyCode.LeftShift) == true)
+        {
+            walkSpeed = 2.5f;
+        }
+        else if(Input.GetKey(KeyCode.LeftShift) == false)
+        {
+            walkSpeed = 1.0f;
+        }
+}
 }
 
